@@ -86,8 +86,10 @@ public class FirstPersonController : MonoBehaviour
 
         Vector3 targetBob = new Vector3(Mathf.Sin(Time.time * 7f), -Mathf.Abs(Mathf.Cos(.2f + Time.time * 7f)), 0f) * .1f;
         targetBob *= movementVariables.motionInput.sqrMagnitude;
-        if(movementVariables.crouching) { targetBob *= .5f; }
 
+        if (movementVariables.crouching) {
+            targetBob *= .5f;
+        }
 
         turningVariables.headbob = Vector3.Lerp(turningVariables.headbob, targetBob, 15.0f * Time.deltaTime);
 

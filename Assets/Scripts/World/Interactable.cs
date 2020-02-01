@@ -3,4 +3,5 @@
     void Interact();
     string Prompt();
     float Time();
+    bool Enabled();
 }

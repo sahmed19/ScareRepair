@@ -8,18 +8,28 @@ public class Door : MonoBehaviour
     public bool open;
 
     public AnimationCurve doorSwingCurve;
+
+    public AudioSource source;
+
+    public AudioClip openDoor;
+    public AudioClip closeDoor;
+
     public void OpenCloseDoor()
     {
         open = !open;
+        source.clip = (open ? closeDoor : openDoor);
+        source.Play();
         StartCoroutine(DoorCoroutine());
     }
 
     IEnumerator DoorCoroutine()
     {
-        float t = 0f;
-        while(t < 1.0f)
+        float time = 0f;
+        while(time < 1.5f)
         {
-            t += Time.deltaTime;
+            time += Time.deltaTime;
+
+            float t = time / 1.5f;
 
             doorHinge.localEulerAngles =
                 Vector3.forward * Mathf.LerpUnclamped(0f, -90f, doorSwingCurve.Evaluate(

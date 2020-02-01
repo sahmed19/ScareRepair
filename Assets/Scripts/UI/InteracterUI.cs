@@ -12,6 +12,14 @@ public class InteracterUI : MonoBehaviour
 
     public AnimationCurve curve;
 
+    AudioSource chargingSource;
+
+
+    private void Start()
+    {
+        chargingSource = GetComponent<AudioSource>();
+    }
+
     public void SetPrompt(string text)
     {
         prompt.text = text;
@@ -20,6 +28,8 @@ public class InteracterUI : MonoBehaviour
     public void SetSlider(float value)
     {
         slider.fillAmount = value;
+        chargingSource.volume = value * .1f;
+        chargingSource.pitch = Mathf.Lerp(.7f, 1f, value);
     }
 
     public void SetButtonVisibility(bool b)
@@ -35,8 +45,7 @@ public class InteracterUI : MonoBehaviour
     private IEnumerator PulseCoroutine()
     {
         float t = 0f;
-
-        while(t < 1.0f)
+        while (t < 1.0f)
         {
             t += Time.deltaTime;
             transform.localScale = Vector3.one * (curve.Evaluate(t));

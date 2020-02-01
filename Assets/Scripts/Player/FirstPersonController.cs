@@ -28,12 +28,16 @@ public class FirstPersonController : MonoBehaviour
         public AnimationCurve crouchCurve;
 
         public Vector3 headbob;
+        public float screenShakePower = 3f;
+        public float screenShakeSpeed = 7f;
+        public float screenShakeMagnitude;
 
     }
 
     [SerializeField] private MovementVariables movementVariables;
     [SerializeField] private TurningVariables turningVariables;
 
+    public HandleSway handleSway;
 
     public Camera fpCamera;
 
@@ -51,6 +55,7 @@ public class FirstPersonController : MonoBehaviour
         GatherInput();
         Locomotion();
         TurningAndCamera();
+        ScreenShake();
     }
 
     private void GatherInput()
@@ -70,6 +75,8 @@ public class FirstPersonController : MonoBehaviour
 
         movementVariables.velocityVector =
             Vector3.Lerp(movementVariables.velocityVector, targetVelocity, movementVariables.smoothing * Time.deltaTime);
+
+        handleSway.SetLocomotion(movementVariables.motionInput.sqrMagnitude);
 
         characterController.SimpleMove(movementVariables.velocityVector);
     }
@@ -93,8 +100,32 @@ public class FirstPersonController : MonoBehaviour
 
         turningVariables.headbob = Vector3.Lerp(turningVariables.headbob, targetBob, 25.0f * Time.deltaTime);
 
+        handleSway.AddMouseMotion(turningVariables.mouseInput);
+
         fpCamera.transform.localPosition += turningVariables.headbob;
 
+    }
+
+    private void ScreenShake()
+    {
+        turningVariables.screenShakeMagnitude = Mathf.Clamp01(turningVariables.screenShakeMagnitude - Time.deltaTime);
+        fpCamera.transform.localPosition +=
+            new Vector3(
+                Mathf.PerlinNoise(Time.time * turningVariables.screenShakeSpeed, 0f)-.5f,
+                Mathf.PerlinNoise(Time.time * turningVariables.screenShakeSpeed, 1f)-.5f,
+            0f) * turningVariables.screenShakePower * turningVariables.screenShakeMagnitude * Time.deltaTime;
+
+        turningVariables.viewAngle += new Vector2(
+            Mathf.PerlinNoise(Time.time * turningVariables.screenShakeSpeed, 0f) - .5f,
+            Mathf.PerlinNoise(Time.time * turningVariables.screenShakeSpeed, 1f) - .5f) 
+        *   turningVariables.screenShakePower * turningVariables.screenShakeMagnitude * Time.deltaTime * 2f;
+
+
+    }
+
+    public void ShakeScreen(float mag)
+    {
+        turningVariables.screenShakeMagnitude += mag;
     }
 
 }

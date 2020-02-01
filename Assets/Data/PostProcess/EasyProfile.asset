@@ -17,8 +17,8 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   preset:
-    overrideState: 0
-    value: 2
+    overrideState: 1
+    value: 4
   maximumIterationCount:
     overrideState: 0
     value: 16
@@ -32,11 +32,11 @@ MonoBehaviour:
     overrideState: 0
     value: 100
   distanceFade:
-    overrideState: 0
-    value: 0.5
+    overrideState: 1
+    value: 0.2
   vignette:
-    overrideState: 0
-    value: 0.5
+    overrideState: 1
+    value: 0.613
 --- !u!114 &-2582751829187619787
 MonoBehaviour:
   m_ObjectHideFlags: 3

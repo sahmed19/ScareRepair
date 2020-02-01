@@ -29,6 +29,8 @@ public class Interacter : MonoBehaviour
             ExamineInteractable(closestInteractable);
         } else
         {
+
+
             progress = 0f;
             interacterUI.SetPrompt("");
             interacterUI.SetSlider(0f);

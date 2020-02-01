@@ -13,6 +13,7 @@ public class Interacter : MonoBehaviour
 
     bool interactInputResetter = false;
 
+    public HammerSwing swing;
     private void Update()
     {
         if (Input.GetButtonUp("Interact"))
@@ -32,6 +33,7 @@ public class Interacter : MonoBehaviour
             interacterUI.SetPrompt("");
             interacterUI.SetSlider(0f);
             interacterUI.SetButtonVisibility(false);
+            swing.SetMagnitude(0f);
         }
 
     }
@@ -63,9 +65,11 @@ public class Interacter : MonoBehaviour
         if (Input.GetButton("Interact") && !interactInputResetter)
         {
             progress += Time.deltaTime;
+            swing.SetMagnitude(1f);
         } else
         {
             progress -= Time.deltaTime * 3.0f;
+            swing.SetMagnitude(0f);
         }
 
         progress = Mathf.Clamp(progress, 0f, 20f);

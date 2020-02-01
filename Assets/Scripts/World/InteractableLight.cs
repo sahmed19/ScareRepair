@@ -5,7 +5,6 @@ using UnityEngine;
 public class InteractableLight : MonoBehaviour, Interactable
 {
     public Light light;
-    public float speed;
 
     public void Interact()
     {
@@ -24,7 +23,7 @@ public class InteractableLight : MonoBehaviour, Interactable
 
     public float Time()
     {
-        return 0.7f;
+        return 0.6f;
     }
 
     public bool Enabled()

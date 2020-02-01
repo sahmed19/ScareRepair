@@ -25,6 +25,10 @@ public class FirstPersonController : MonoBehaviour
         public float sensitivity = 1.0f;
         public bool invertY = false;
         public float cameraHeight = 1.0f;
+        public AnimationCurve crouchCurve;
+
+        public Vector3 headbob;
+
     }
 
     [SerializeField] private MovementVariables movementVariables;
@@ -75,8 +79,20 @@ public class FirstPersonController : MonoBehaviour
         turningVariables.viewAngle += turningVariables.mouseInput * turningVariables.sensitivity;
         transform.localRotation = Quaternion.Euler(Vector3.up * turningVariables.viewAngle.x);
         fpCamera.transform.localRotation = Quaternion.Euler(Vector3.right * turningVariables.viewAngle.y);
-        fpCamera.transform.localPosition = 
-            Vector3.up * (movementVariables.crouching ? 0.0f : 1.0f);
+        turningVariables.cameraHeight = Mathf.Lerp(turningVariables.cameraHeight,
+            (movementVariables.crouching ? 0.0f : 1.0f), Time.deltaTime * 7.0f);
+
+        fpCamera.transform.localPosition = Vector3.up * turningVariables.crouchCurve.Evaluate(turningVariables.cameraHeight);
+
+        Vector3 targetBob = new Vector3(Mathf.Sin(Time.time * 7f), -Mathf.Abs(Mathf.Cos(.2f + Time.time * 7f)), 0f) * .1f;
+        targetBob *= movementVariables.motionInput.sqrMagnitude;
+        if(movementVariables.crouching) { targetBob *= .5f; }
+
+
+        turningVariables.headbob = Vector3.Lerp(turningVariables.headbob, targetBob, 15.0f * Time.deltaTime);
+
+        fpCamera.transform.localPosition += turningVariables.headbob;
+
     }
 
 }

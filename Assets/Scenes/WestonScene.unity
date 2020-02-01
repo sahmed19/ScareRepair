@@ -950,7 +950,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: ff1716490868ab5479430b32bee250e6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ff1716490868ab5479430b32bee250e6,
         type: 3}
@@ -4010,6 +4010,10 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     headbob: {x: 0, y: 0, z: 0}
+    screenShakePower: 3
+    screenShakeSpeed: 7
+    screenShakeMagnitude: 0
+  handleSway: {fileID: 0}
   fpCamera: {fileID: 171237863}
 --- !u!143 &1901302526
 CharacterController:

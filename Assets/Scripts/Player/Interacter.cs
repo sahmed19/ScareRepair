@@ -11,8 +11,14 @@ public class Interacter : MonoBehaviour
 
     float progress;
 
+    bool interactInputResetter = false;
+
     private void Update()
     {
+        if (Input.GetButtonUp("Interact"))
+        {
+            interactInputResetter = false;
+        }
 
         Interactable closestInteractable = GetInteractablesInVicinity();
 
@@ -30,17 +36,16 @@ public class Interacter : MonoBehaviour
 
     private Interactable GetInteractablesInVicinity()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.forward, 2.0f, interactableLayer.value);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 2.0f, interactableLayer.value);
 
         Interactable closestInteractable = null;
-        float highestDot = -2.0f;
+        float highestDot = .9f;
         foreach(Collider col in colliders)
         {
             Interactable interactable = col.GetComponent<Interactable>();
-            float dot = Vector3.Dot(transform.forward, (transform.position - col.transform.position).normalized);
+            float dot = Vector3.Dot(transform.forward, (col.transform.position - transform.position).normalized);
             
-            
-            if(interactable != null && highestDot < dot)
+            if(interactable != null && dot > highestDot)
             {
                 closestInteractable = interactable;
                 highestDot = dot;
@@ -53,7 +58,9 @@ public class Interacter : MonoBehaviour
 
     private void ExamineInteractable(Interactable interactable)
     {
-        if(Input.GetButton("Interact"))
+
+
+        if (Input.GetButton("Interact") && !interactInputResetter)
         {
             progress += Time.deltaTime;
         } else
@@ -69,6 +76,8 @@ public class Interacter : MonoBehaviour
         if (progress > interactable.Time())
         {
             interactable.Interact();
+            progress = 0f;
+            interactInputResetter = true;
         }
 
     }

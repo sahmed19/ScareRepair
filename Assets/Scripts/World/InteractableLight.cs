@@ -24,6 +24,6 @@ public class InteractableLight : MonoBehaviour, Interactable
 
     public float Time()
     {
-        return .3f;
+        return 0.7f;
     }
 }

@@ -47,7 +47,7 @@ public class Interacter : MonoBehaviour
             Interactable interactable = col.GetComponent<Interactable>();
             float dot = Vector3.Dot(transform.forward, (col.transform.position - transform.position).normalized);
             
-            if(interactable != null && dot > highestDot)
+            if(interactable != null && interactable.Enabled() && dot > highestDot)
             {
                 closestInteractable = interactable;
                 highestDot = dot;

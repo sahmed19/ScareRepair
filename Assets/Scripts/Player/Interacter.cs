@@ -24,12 +24,14 @@ public class Interacter : MonoBehaviour
 
         if(closestInteractable != null)
         {
+            interacterUI.SetButtonVisibility(true);
             ExamineInteractable(closestInteractable);
         } else
         {
             progress = 0f;
             interacterUI.SetPrompt("");
             interacterUI.SetSlider(0f);
+            interacterUI.SetButtonVisibility(false);
         }
 
     }
@@ -39,7 +41,7 @@ public class Interacter : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, 2.0f, interactableLayer.value);
 
         Interactable closestInteractable = null;
-        float highestDot = .9f;
+        float highestDot = .95f;
         foreach(Collider col in colliders)
         {
             Interactable interactable = col.GetComponent<Interactable>();
@@ -58,8 +60,6 @@ public class Interacter : MonoBehaviour
 
     private void ExamineInteractable(Interactable interactable)
     {
-
-
         if (Input.GetButton("Interact") && !interactInputResetter)
         {
             progress += Time.deltaTime;
@@ -75,6 +75,7 @@ public class Interacter : MonoBehaviour
 
         if (progress > interactable.Time())
         {
+            interacterUI.Pulse();
             interactable.Interact();
             progress = 0f;
             interactInputResetter = true;

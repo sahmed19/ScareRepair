@@ -982,6 +982,8 @@ GameObject:
   - component: {fileID: 781611919}
   - component: {fileID: 781611918}
   - component: {fileID: 781611920}
+  - component: {fileID: 781611921}
+  - component: {fileID: 781611922}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -1160,6 +1162,44 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!169 &781611921
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781611917}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.9490223
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &781611922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781611917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859ec2987e6f0b2418122a9183ec7464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1018043007}
 --- !u!1 &791155432 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3990036101274998414, guid: e94bdb775e1f71d49ba6464718acb414,

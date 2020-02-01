@@ -15,6 +15,12 @@ public class HammerSwing : MonoBehaviour
 
     bool clangResetter = true;
 
+    public AudioSource source;
+    public AudioClip[] hits;
+    int hitIndex;
+
+
+
     public void SetMagnitude(float s)
     {
         targetMagnitude = s;
@@ -32,6 +38,9 @@ public class HammerSwing : MonoBehaviour
         if((t % 1.0f) > .6f && clangResetter)
         {
             onClang.Invoke();
+            hitIndex = (hitIndex + 1) % hits.Length;
+            source.clip = hits[hitIndex];
+            source.Play();
             clangResetter = false;
         } else if(t % 1.0f < .1f)
         {

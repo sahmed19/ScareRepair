@@ -579,7 +579,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b150d6b4de124a24f92075fc58831881, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -911,17 +911,6 @@ MonoBehaviour:
   onClang:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 494858255}
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1817751294}
         m_MethodName: Play
         m_Mode: 1
@@ -940,10 +929,15 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0.2
+          m_FloatArgument: 0.4
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  source: {fileID: 494858255}
+  hits:
+  - {fileID: 8300000, guid: 55631a2a68a31b64fbc320ad45d4e2e2, type: 3}
+  - {fileID: 8300000, guid: af3562df9effd5847a9c11d58c8b7d34, type: 3}
+  - {fileID: 8300000, guid: 3acd50eeca6dfcf40a1ba95ad14ee35e, type: 3}
 --- !u!82 &494858255
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2865,7 +2859,7 @@ MonoBehaviour:
         outWeight: 0
       - serializedVersion: 3
         time: 0.053267512
-        value: 0.052662317
+        value: 0.019031946
         inSlope: -1.1664449
         outSlope: -1.1664449
         tangentMode: 0
@@ -2873,17 +2867,8 @@ MonoBehaviour:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.21087623
-        value: -0.18637425
-        inSlope: 0.5268021
-        outSlope: 0.5268021
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.8307826
-        value: 1.2395856
+        time: 0.7766139
+        value: 1.1050909
         inSlope: 0.53231096
         outSlope: 0.53231096
         tangentMode: 0

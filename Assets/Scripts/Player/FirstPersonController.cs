@@ -24,16 +24,23 @@ public class FirstPersonController : MonoBehaviour
         public Vector2 viewAngle;
         public float sensitivity = 1.0f;
         public bool invertY = false;
+        public float cameraHeight = 1.0f;
     }
 
     [SerializeField] private MovementVariables movementVariables;
     [SerializeField] private TurningVariables turningVariables;
 
 
-    public Camera camera;
+    public Camera fpCamera;
 
     private CharacterController characterController;
 
+    private void Start()
+    {
+        characterController = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     private void Update()
     {
@@ -44,9 +51,9 @@ public class FirstPersonController : MonoBehaviour
 
     private void GatherInput()
     {
-        movementVariables.motionInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Horizontal")).normalized;
+        movementVariables.motionInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         turningVariables.mouseInput = new Vector2(Input.GetAxisRaw("MouseX"), (turningVariables.invertY ? 1.0f : -1.0f) * Input.GetAxisRaw("MouseY"));
-        if (Input.GetButtonDown("ToggleCrouch")) {
+        if (Input.GetButtonDown("Crouch")) {
             movementVariables.crouching = !movementVariables.crouching;
         }
     }
@@ -67,8 +74,9 @@ public class FirstPersonController : MonoBehaviour
     {
         turningVariables.viewAngle += turningVariables.mouseInput * turningVariables.sensitivity;
         transform.localRotation = Quaternion.Euler(Vector3.up * turningVariables.viewAngle.x);
-        camera.transform.localRotation = Quaternion.Euler(Vector3.right * turningVariables.viewAngle.y);
-        camera.transform.localPosition = Vector3.up * (movementVariables.crouching ? 0.0f : 1.0f);
+        fpCamera.transform.localRotation = Quaternion.Euler(Vector3.right * turningVariables.viewAngle.y);
+        fpCamera.transform.localPosition = 
+            Vector3.up * (movementVariables.crouching ? 0.0f : 1.0f);
     }
 
 }

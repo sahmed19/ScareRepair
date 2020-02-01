@@ -19,7 +19,7 @@ public class HandleSway : MonoBehaviour
     }
     private void Update()
     {
-        lastPosParent = transform.parent.localPosition;
+        
         transform.localPosition = Vector3.Lerp(transform.localPosition, restingPosition, recoverySpeed * Time.deltaTime);
         transform.localPosition += Vector3.up * Mathf.Sin(Time.time * 7f) * locomotiveForce * .2f * Time.deltaTime;
         transform.localRotation = Quaternion.Euler(Vector3.right * Mathf.Cos(.2f + Time.time * 7f) * locomotiveForce);
@@ -29,6 +29,7 @@ public class HandleSway : MonoBehaviour
     {
         deltParent = transform.parent.localPosition - lastPosParent;
         transform.localPosition += deltParent * -.1f;
+        lastPosParent = transform.parent.localPosition;
     }
 
     public void AddMouseMotion(Vector2 m)

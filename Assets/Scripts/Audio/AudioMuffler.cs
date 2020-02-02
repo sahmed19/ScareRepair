@@ -12,6 +12,8 @@ public class AudioMuffler : MonoBehaviour
 
     bool obstacle = false;
 
+    public LayerMask maskObstacles;
+
     private void Start()
     {
         filter = GetComponent<AudioLowPassFilter>();
@@ -21,12 +23,13 @@ public class AudioMuffler : MonoBehaviour
         obstacle = true;
         RaycastHit hit;
         Ray ray = new Ray(transform.position, player.position - transform.position);
-        if(Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(ray, out hit, maskObstacles.value))
         {
             if(hit.collider.CompareTag("Player"))
             {
                 obstacle = false;
             }
+            Debug.Log(obstacle);
         }
 
         filter.cutoffFrequency = Mathf.Lerp(filter.cutoffFrequency, obstacle ? 3500 : 20000, 5.0f * Time.deltaTime);

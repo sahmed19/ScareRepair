@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2005843890119247464}
   - component: {fileID: 2005843890119247465}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Blocker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2005843890229619121}
   - component: {fileID: 2005843890229619122}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Blocker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 537020331558523904}
   - component: {fileID: 479657170584739604}
   - component: {fileID: 7914343597051667789}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Doorframe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 8261732581858683641}
   - component: {fileID: 2096480945481039871}
   - component: {fileID: 2005843891360909832}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}

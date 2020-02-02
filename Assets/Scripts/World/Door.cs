@@ -50,6 +50,22 @@ public class Door : MonoBehaviour, Interactable
         StartCoroutine(DoorCoroutine());
     }
 
+    public void CloseDoor()
+    {
+        if(!open)
+        {
+            OpenCloseDoor();
+        }
+    }
+
+    public void OpenDoor()
+    {
+        if (open)
+        {
+            OpenCloseDoor();
+        }
+    }
+
     IEnumerator DoorCoroutine()
     {
         inProgress = true;

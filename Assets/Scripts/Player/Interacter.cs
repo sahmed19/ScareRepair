@@ -13,6 +13,8 @@ public class Interacter : MonoBehaviour
 
     bool interactInputResetter = false;
 
+    bool doorbool = true;
+
     public HammerSwing swing;
     private void Update()
     {
@@ -45,7 +47,7 @@ public class Interacter : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, 2.0f, interactableLayer.value);
 
         Interactable closestInteractable = null;
-        float highestDot = .95f;
+        float highestDot = .8f;
         foreach(Collider col in colliders)
         {
             Interactable interactable = col.GetComponent<Interactable>();
@@ -78,6 +80,15 @@ public class Interacter : MonoBehaviour
 
         interacterUI.SetPrompt(interactable.Prompt());
         interacterUI.SetSlider(progress / interactable.TimeToComplete());
+
+        if(interactable is InteractableBrokenWall && doorbool && (progress > interactable.TimeToComplete() - 1f))
+        {
+            (interactable as InteractableBrokenWall).BeforeComplete();
+            interacterUI.Pulse();
+            progress = 0f;
+            interactInputResetter = true;
+            doorbool = false;
+        }
 
         if (progress > interactable.TimeToComplete())
         {

@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class InteractableLight : MonoBehaviour, Interactable
 {
-    public Light light;
+    public Light[] lights;
+
+    public MeshRenderer meshRenderer;
+
+    public Color emissionColor;
 
     public void Interact()
     {
-        light.enabled = !light.enabled;
+        foreach (Light light in lights)
+        {
+            light.enabled = !light.enabled;
+        }
+        meshRenderer.materials[1].SetColor("_EmissionColor", emissionColor * (lights[0].enabled ? 1f : 0f));
     }
 
     public string Prompt()
     {
-        if(light.enabled)
+        if(lights[0].enabled)
         {
             return "Turn Off Light";
         }

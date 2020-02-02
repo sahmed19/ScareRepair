@@ -11,6 +11,10 @@ public class PaperViewer : MonoBehaviour
 
     public Texture2D[] paperTextures;
 
+    public MeshRenderer paperRenderer;
+
+    int index = 0;
+
     private void Update()
     {
 
@@ -26,6 +30,12 @@ public class PaperViewer : MonoBehaviour
 
         transform.localEulerAngles = Vector3.right * 90f * (1f-drawCurve.Evaluate(drawn));
 
+    }
+
+    public void NextPaper()
+    {
+        index++;
+        paperRenderer.material.SetTexture("_MainTex", paperTextures[index]);
     }
 
 }

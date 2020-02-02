@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour, Interactable
 {
     public Transform doorHinge;
     public bool open;
@@ -14,8 +14,33 @@ public class Door : MonoBehaviour
     public AudioClip openDoor;
     public AudioClip closeDoor;
 
+    bool inProgress = false;
+
+    public bool Enabled()
+    {
+        return !inProgress;
+    }
+
+    public void Interact()
+    {
+        OpenCloseDoor();
+    }
+
+    
+
+    public string Prompt()
+    {
+        return (open ? "Open Door" : "Close Door");
+    }
+
+    public float TimeToComplete()
+    {
+        return .6f;
+    }
+
     public void OpenCloseDoor()
     {
+        StopCoroutine(DoorCoroutine());
         open = !open;
         source.clip = (open ? closeDoor : openDoor);
         source.Play();
@@ -24,6 +49,7 @@ public class Door : MonoBehaviour
 
     IEnumerator DoorCoroutine()
     {
+        inProgress = true;
         float time = 0f;
         while(time < 1.5f)
         {
@@ -39,6 +65,7 @@ public class Door : MonoBehaviour
             yield return null;
 
         }
+        inProgress = false;
     }
 
 }

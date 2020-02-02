@@ -13,6 +13,8 @@ public class PaperViewer : MonoBehaviour
 
     public MeshRenderer paperRenderer;
 
+    public AudioSource source;
+
     int index = 0;
 
     private void Update()
@@ -35,7 +37,12 @@ public class PaperViewer : MonoBehaviour
     public void NextPaper()
     {
         index++;
+        if(index > paperTextures.Length - 1)
+        {
+            return;
+        }
         paperRenderer.material.SetTexture("_MainTex", paperTextures[index]);
+        source.Play();
     }
 
 }

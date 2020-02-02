@@ -16,6 +16,11 @@ public class Door : MonoBehaviour, Interactable
 
     bool inProgress = false;
 
+    public void StartBanging()
+    {
+        StartCoroutine(BangingCoroutine());
+    }
+
     public bool Enabled()
     {
         return !inProgress;
@@ -25,8 +30,6 @@ public class Door : MonoBehaviour, Interactable
     {
         OpenCloseDoor();
     }
-
-    
 
     public string Prompt()
     {
@@ -68,4 +71,18 @@ public class Door : MonoBehaviour, Interactable
         inProgress = false;
     }
 
+    IEnumerator BangingCoroutine()
+    {
+        inProgress = true;
+        float time = 0f;
+        while (time < 5.0f)
+        {
+            doorHinge.localEulerAngles =
+                    Vector3.forward * Mathf.PerlinNoise(Time.time * 7.0f, 0f) * 4f;
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+        inProgress = false;
+    }
 }

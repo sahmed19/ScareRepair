@@ -69,7 +69,7 @@ public class FirstPersonController : MonoBehaviour
         movementVariables.motionInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         turningVariables.mouseInput = new Vector2(Input.GetAxisRaw("MouseX"), (turningVariables.invertY ? 1.0f : -1.0f) * Input.GetAxisRaw("MouseY"));
         if (Input.GetButtonDown("Crouch")) {
-            //movementVariables.crouching = !movementVariables.crouching;
+            movementVariables.crouching = !movementVariables.crouching;
         }
     }
 

@@ -77,9 +77,9 @@ public class Interacter : MonoBehaviour
         progress = Mathf.Clamp(progress, 0f, 20f);
 
         interacterUI.SetPrompt(interactable.Prompt());
-        interacterUI.SetSlider(progress / interactable.Time());
+        interacterUI.SetSlider(progress / interactable.TimeToComplete());
 
-        if (progress > interactable.Time())
+        if (progress > interactable.TimeToComplete())
         {
             interacterUI.Pulse();
             interactable.Interact();

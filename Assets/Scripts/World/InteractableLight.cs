@@ -21,7 +21,7 @@ public class InteractableLight : MonoBehaviour, Interactable
         return "Turn On Light";
     }
 
-    public float Time()
+    public float TimeToComplete()
     {
         return 0.6f;
     }

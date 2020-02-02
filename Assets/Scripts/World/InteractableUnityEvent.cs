@@ -27,7 +27,7 @@ public class InteractableUnityEvent : MonoBehaviour, Interactable
         return prompt;
     }
 
-    public float Time()
+    public float TimeToComplete()
     {
         return time;
     }

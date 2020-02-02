@@ -2,6 +2,6 @@
 {
     void Interact();
     string Prompt();
-    float Time();
+    float TimeToComplete();
     bool Enabled();
 }

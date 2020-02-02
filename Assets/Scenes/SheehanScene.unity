@@ -3568,7 +3568,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1178066645}
   - component: {fileID: 1178066646}
-  - component: {fileID: 1178066647}
   - component: {fileID: 1178066648}
   - component: {fileID: 1178066649}
   m_Layer: 8
@@ -3651,35 +3650,6 @@ MonoBehaviour:
   source: {fileID: 1178066649}
   openDoor: {fileID: 8300000, guid: 043c2f6a1fd8973409c60a18e9a81468, type: 3}
   closeDoor: {fileID: 8300000, guid: 604dca1d5d6ec694eb7ada2af8616818, type: 3}
---- !u!114 &1178066647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1178066644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 480a1ef53994dbb4f89ec38fc32e02d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1178066646}
-        m_MethodName: OpenCloseDoor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  prompt: Door
-  time: 0.6
-  disableAfterOneInteraction: 0
 --- !u!135 &1178066648
 SphereCollider:
   m_ObjectHideFlags: 0

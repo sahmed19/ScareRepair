@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/WestonScene.unity
+    guid: d24d489d9ddeac147a6f0ff859d84496
+  - enabled: 1
+    path: Assets/Scenes/Full House.unity
+    guid: 332f799eb19c0bb40a6c54d117632e02
   m_configObjects: {}

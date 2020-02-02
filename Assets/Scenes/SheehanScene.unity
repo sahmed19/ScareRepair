@@ -1305,6 +1305,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  paperTextures:
+  - {fileID: 2800000, guid: 833b20e33d2509e48b795593dfd07b7f, type: 3}
+  - {fileID: 2800000, guid: e0daf79a4eb369946ac8d14f8c843d81, type: 3}
+  - {fileID: 2800000, guid: 7fc842113d98bd24fb2633c81ca7be5a, type: 3}
+  - {fileID: 2800000, guid: df0a8340a93c4b54cb4110bda849b76e, type: 3}
+  - {fileID: 2800000, guid: a8db06aa2f8d7a8438bb1393537c2965, type: 3}
+  - {fileID: 2800000, guid: 46fc1f7aabc0e8d49a28ef271da6f28e, type: 3}
 --- !u!1 &575070647
 GameObject:
   m_ObjectHideFlags: 0

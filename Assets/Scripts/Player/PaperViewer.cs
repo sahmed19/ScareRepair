@@ -9,6 +9,8 @@ public class PaperViewer : MonoBehaviour
 
     float drawn = 0f;
 
+    public Texture2D[] paperTextures;
+
     private void Update()
     {
 

@@ -30,8 +30,6 @@ public class FootstepManager : MonoBehaviour
             source.clip = currentAudioPack.rightFootsteps[index];
         }
 
-        Debug.Log("footstep " + source.clip.name);
-
         source.Play();
 
     }

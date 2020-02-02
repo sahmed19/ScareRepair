@@ -69,7 +69,7 @@ public class FirstPersonController : MonoBehaviour
         movementVariables.motionInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         turningVariables.mouseInput = new Vector2(Input.GetAxisRaw("MouseX"), (turningVariables.invertY ? 1.0f : -1.0f) * Input.GetAxisRaw("MouseY"));
         if (Input.GetButtonDown("Crouch")) {
-            movementVariables.crouching = !movementVariables.crouching;
+            //movementVariables.crouching = !movementVariables.crouching;
         }
     }
 
@@ -93,7 +93,7 @@ public class FirstPersonController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(Vector3.up * turningVariables.viewAngle.x);
         fpCamera.transform.localRotation = Quaternion.Euler(Vector3.right * turningVariables.viewAngle.y);
         turningVariables.cameraHeight = Mathf.Lerp(turningVariables.cameraHeight,
-            (movementVariables.crouching ? 0.0f : 1.0f), Time.deltaTime * 7.0f);
+           (movementVariables.crouching ? 0.0f : 1.0f), Time.deltaTime * 7.0f);
 
         fpCamera.transform.localPosition = Vector3.up * turningVariables.crouchCurve.Evaluate(turningVariables.cameraHeight);
 
@@ -101,7 +101,7 @@ public class FirstPersonController : MonoBehaviour
         targetBob *= movementVariables.motionInput.sqrMagnitude;
 
         if (movementVariables.crouching) {
-            targetBob *= .5f;
+           targetBob *= .5f;
         }
 
         turningVariables.headbob = Vector3.Lerp(turningVariables.headbob, targetBob, 25.0f * Time.deltaTime);

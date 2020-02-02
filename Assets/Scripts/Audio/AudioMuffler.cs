@@ -32,6 +32,6 @@ public class AudioMuffler : MonoBehaviour
             Debug.Log(obstacle);
         }
 
-        filter.cutoffFrequency = Mathf.Lerp(filter.cutoffFrequency, obstacle ? 3500 : 20000, 5.0f * Time.deltaTime);
+        filter.cutoffFrequency = Mathf.Lerp(filter.cutoffFrequency, obstacle ? 5500 : 20000, 5.0f * Time.deltaTime);
     }
 }

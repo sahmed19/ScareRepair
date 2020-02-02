@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour
@@ -43,6 +44,10 @@ public class FirstPersonController : MonoBehaviour
 
     private CharacterController characterController;
 
+    float footstepTimer = 0f;
+
+    public UnityEvent takeFootstep;
+    
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -56,6 +61,7 @@ public class FirstPersonController : MonoBehaviour
         Locomotion();
         TurningAndCamera();
         ScreenShake();
+        Footsteps();
     }
 
     private void GatherInput()
@@ -76,8 +82,8 @@ public class FirstPersonController : MonoBehaviour
         movementVariables.velocityVector =
             Vector3.Lerp(movementVariables.velocityVector, targetVelocity, movementVariables.smoothing * Time.deltaTime);
 
-        handleSway.SetLocomotion(movementVariables.motionInput.sqrMagnitude);
 
+        handleSway.SetLocomotion(movementVariables.motionInput.sqrMagnitude);
         characterController.SimpleMove(movementVariables.velocityVector);
     }
 
@@ -121,6 +127,16 @@ public class FirstPersonController : MonoBehaviour
         *   turningVariables.screenShakePower * turningVariables.screenShakeMagnitude * Time.deltaTime * 2f;
 
 
+    }
+
+    private void Footsteps()
+    {
+        footstepTimer += (movementVariables.motionInput.sqrMagnitude > .1f? 1.4f : 0f) * Time.deltaTime;
+        if(footstepTimer > 1.0f)
+        {
+            takeFootstep.Invoke();
+            footstepTimer = 0f;
+        }
     }
 
     public void ShakeScreen(float mag)

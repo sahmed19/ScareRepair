@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1434a897fa433f2489ac749f1c825e58, type: 3}
+  m_Name: WoodAudioPack
+  m_EditorClassIdentifier: 
+  leftFootsteps:
+  - {fileID: 8300000, guid: f56b0989e89d6bd48b69e7fed14d23c0, type: 3}
+  - {fileID: 8300000, guid: bf825a71edf03a64695c23fa1b2ca373, type: 3}
+  - {fileID: 8300000, guid: bf825a71edf03a64695c23fa1b2ca373, type: 3}
+  rightFootsteps:
+  - {fileID: 8300000, guid: cb906fe9a6978844087e427368fbe22d, type: 3}
+  - {fileID: 8300000, guid: a7f1baec42b987349871c82cb6b7476a, type: 3}
+  - {fileID: 8300000, guid: c1e81ce0e9edac942a5f71cf015af794, type: 3}
